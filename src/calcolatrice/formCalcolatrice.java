@@ -80,6 +80,38 @@ public class formCalcolatrice {
         return s;
     }
 
+    //Calcolo espressione in notazione polacca inversa
+    float solveRPN(String input){
+        Stack<Float> st = new Stack<>(); //Stack per aggiungere i numeri
+        float n1, n2;
+        float res=0;
+        String[] arr = input.split("\\s+"); //Divisione della stringa di input
+
+        for(String s:arr){
+            if(s.matches("\\d+")){
+                st.push(Float.parseFloat(s));
+            }
+            else{
+                n2=st.pop();
+                n1=st.pop();
+                if(s.equals("+")){
+                    res=n1+n2;
+                }
+                else if(s.equals("-")){
+                    res=n1-n2;
+                }
+                else if(s.equals("/") || s.equals("÷")){
+                    res=n1/n2;
+                }
+                else if(s.equals("*") || s.equals("×")){
+                    res=n1*n2;
+                }
+                st.push(res);
+            }
+        }
+        return st.pop();
+    }
+
     //Assegno priorità (la parentesi chiusa ha priorità pari a 0)
     int operatorPriority(char c){
         if(c=='*' || c=='×' || c=='/' || c=='÷'){
@@ -207,7 +239,7 @@ public class formCalcolatrice {
         bSolve.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                txtOutput.setText(convertToRPN(txtInput.getText()));
+                txtOutput.setText(Float.toString(solveRPN(convertToRPN(txtInput.getText()))));
             }
         });
     }
