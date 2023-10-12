@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="calcolatrice.formCalcolatrice">
+  <grid id="27dc6" binding="panelBase" layout-manager="GridLayoutManager" row-count="8" column-count="5" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="0" left="0" bottom="0" right="0"/>
+    <constraints>
+      <xy x="20" y="20" width="500" height="638"/>
+    </constraints>
+    <properties>
+      <maximumSize width="500" height="600"/>
+      <minimumSize width="500" height="600"/>
+      <preferredSize width="500" height="600"/>
+    </properties>
+    <border type="none"/>
+    <children>
+      <component id="e6d02" class="javax.swing.JTextField" binding="txtOutput">
+        <constraints>
+          <grid row="1" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="6" anchor="8" fill="3" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <editable value="false"/>
+          <font name="Comic Sans MS" size="36" style="1"/>
+          <text value=""/>
+        </properties>
+      </component>
+      <component id="45ecf" class="javax.swing.JButton" binding="b7">
+        <constraints>
+          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <alignmentY value="0.0"/>
+          <borderPainted value="true"/>
+          <focusable value="false"/>
+          <font name="Comic Sans MS" size="36" style="1"/>
+          <text value="7"/>
+        </properties>
+      </component>
+      <component id="e10ea" class="javax.swing.JButton" binding="b8">
+        <constraints>
+          <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <focusable value="false"/>
+          <font name="Comic Sans MS" size="36" style="1"/>
+          <text value="8"/>
+        </properties>
+      </component>
+      <component id="30fe4" class="javax.swing.JButton" binding="b9">
+        <constraints>
+          <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <focusable value="false"/>
+          <font name="Comic Sans MS" size="36" style="1"/>
+          <text value="9"/>
+        </properties>
+      </component>
+      <component id="64ff" class="javax.swing.JButton" binding="b4">
+        <constraints>
+          <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <focusable value="false"/>
+          <font name="Comic Sans MS" size="36" style="1"/>
+          <text value="4"/>
+        </properties>
+      </component>
+      <component id="d9992" class="javax.swing.JButton" binding="b5">
+        <constraints>
+          <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <focusable value="false"/>
+          <font name="Comic Sans MS" size="36" style="1"/>
+          <text value="5"/>
+        </properties>
+      </component>
+      <component id="a277" class="javax.swing.JButton" binding="b6">
+        <constraints>
+          <grid row="5" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <focusable value="false"/>
+          <font name="Comic Sans MS" size="36" style="1"/>
+          <text value="6"/>
+        </properties>
+      </component>
+      <component id="97403" class="javax.swing.JButton" binding="b1">
+        <constraints>
+          <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <focusable value="false"/>
+          <font name="Comic Sans MS" size="36" style="1"/>
+          <text value="1"/>
+        </properties>
+      </component>
+      <component id="1c932" class="javax.swing.JButton" binding="b2">
+        <constraints>
+          <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <focusable value="false"/>
+          <font name="Comic Sans MS" size="36" style="1"/>
+          <text value="2"/>
+        </properties>
+      </component>
+      <component id="c7c7b" class="javax.swing.JButton" binding="b3">
+        <constraints>
+          <grid row="6" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <focusable value="false"/>
+          <font name="Comic Sans MS" size="36" style="1"/>
+          <text value="3"/>
+        </properties>
+      </component>
+      <component id="85c0f" class="javax.swing.JButton" binding="b0">
+        <constraints>
+          <grid row="7" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <focusable value="false"/>
+          <font name="Comic Sans MS" size="36" style="1"/>
+          <text value="0"/>
+        </properties>
+      </component>
+      <component id="455f4" class="javax.swing.JButton" binding="bParOpen">
+        <constraints>
+          <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <focusable value="false"/>
+          <font name="Comic Sans MS" size="36" style="1"/>
+          <text value="("/>
+        </properties>
+      </component>
+      <component id="70729" class="javax.swing.JButton" binding="bParClose">
+        <constraints>
+          <grid row="7" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <focusable value="false"/>
+          <font name="Comic Sans MS" size="36" style="1"/>
+          <text value=")"/>
+        </properties>
+      </component>
+      <component id="b1058" class="javax.swing.JButton" binding="bPlus">
+        <constraints>
+          <grid row="4" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <focusable value="false"/>
+          <font name="Comic Sans MS" size="36" style="1"/>
+          <label value="+"/>
+          <text value="+"/>
+        </properties>
+      </component>
+      <component id="f76c4" class="javax.swing.JButton" binding="bMinus">
+        <constraints>
+          <grid row="5" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <actionCommand value=""/>
+          <focusable value="false"/>
+          <font name="Comic Sans MS" size="36" style="1"/>
+          <label value="-"/>
+          <text value="-"/>
+        </properties>
+      </component>
+      <component id="86714" class="javax.swing.JButton" binding="bTimes">
+        <constraints>
+          <grid row="6" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <actionCommand value=""/>
+          <focusable value="false"/>
+          <font name="Comic Sans MS" size="36" style="1"/>
+          <label value="×"/>
+          <text value="×"/>
+        </properties>
+      </component>
+      <component id="14fc3" class="javax.swing.JButton" binding="bDiv">
+        <constraints>
+          <grid row="7" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <actionCommand value=""/>
+          <focusable value="false"/>
+          <font name="Comic Sans MS" size="36" style="1"/>
+          <label value="÷"/>
+          <text value="÷"/>
+        </properties>
+      </component>
+      <component id="2f3f7" class="javax.swing.JButton" binding="bCanc">
+        <constraints>
+          <grid row="3" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <focusable value="false"/>
+          <font name="Comic Sans MS" size="36" style="1"/>
+          <text value="CANC"/>
+        </properties>
+      </component>
+      <component id="47827" class="javax.swing.JButton" binding="bSolve">
+        <constraints>
+          <grid row="3" column="2" row-span="1" col-span="3" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <focusable value="false"/>
+          <font name="Comic Sans MS" size="36" style="1"/>
+          <text value="="/>
+        </properties>
+      </component>
+      <component id="c44b2" class="javax.swing.JTextField" binding="txtInput">
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="6" anchor="8" fill="3" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <editable value="true"/>
+          <font name="Comic Sans MS" size="36" style="1"/>
+          <text value=""/>
+        </properties>
+      </component>
+    </children>
+  </grid>
+</form>
