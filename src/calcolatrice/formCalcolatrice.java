@@ -3,6 +3,7 @@ package calcolatrice;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Stack;
 
 public class formCalcolatrice {
     private JPanel panelBase;
@@ -32,10 +33,70 @@ public class formCalcolatrice {
         txtInput.setText(txtInput.getText()+b.getText());
     }
 
+    //Conversione in notazione polacca inversa
     String convertToRPN(String input){
         String s="";
+        Stack<Character> stack = new Stack<>();
 
+        for(char c:input.toCharArray()){
+            //Se si tratta di un numero, lo aggiungo direttamente alla stringa di output
+            if(Character.isDigit(c)){
+                s+=c;
+            }
+            //In tutti gli altri casi si tratta di simboli
+            else{
+                if(s.charAt(s.length()-1)!=' '){
+                    s+=" "; //Aggiungo uno spazio alla stringa di output in modo da separare i numeri
+                }
+                //Se è una parentesi aperta, la inserisco direttamente
+                if(c=='('){
+                    stack.push(c);
+                }
+                else{
+                    //In tutti gli altri casi, confronto le priorità degli operatori, e tolgo elementi dallo stack in base alle priorità
+                    while(!stack.isEmpty() && comparePriority(stack.peek(), c)){
+                        if(stack.peek()!='('){
+                            s+=stack.pop();
+                        }
+                        else{
+                            stack.pop();
+                        }
+                    }
+                    //Inserisco l'ultimo operatore nello stack
+                    stack.push(c);
+                }
+            }
+        }
+
+        //Svuoto lo stack quando finisco di scorrere la stringa di input
+        while(!stack.isEmpty()){
+            if(stack.peek()!='(' && stack.peek()!=')'){
+                s+=" "+stack.pop();
+            }
+            else{
+                stack.pop();
+            }
+        }
         return s;
+    }
+
+    //Assegno priorità (la parentesi chiusa ha priorità pari a 0)
+    int operatorPriority(char c){
+        if(c=='*' || c=='×' || c=='/' || c=='÷'){
+            return 2;
+        }
+        else if(c=='+' || c=='-'){
+            return 1;
+        }
+        return 0;
+    }
+
+    //Confronto priorità tra due operatori
+    boolean comparePriority(char c1, char c2){
+        if(operatorPriority(c1) > operatorPriority(c2)){
+            return true;
+        }
+        return false;
     }
 
     public formCalcolatrice() {
@@ -141,6 +202,12 @@ public class formCalcolatrice {
             @Override
             public void actionPerformed(ActionEvent e) {
                 txtInput.setText("");
+            }
+        });
+        bSolve.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                txtOutput.setText(convertToRPN(txtInput.getText()));
             }
         });
     }
