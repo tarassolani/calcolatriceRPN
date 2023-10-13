@@ -108,7 +108,7 @@ public class formCalcolatrice {
         return st.pop();
     }
 
-    //Assegno priorità (la parentesi chiusa ha priorità pari a 0)
+    //Assegno priorità agli operatori
     int operatorPriority(char c){
         if(c=='*' || c=='×' || c=='/' || c=='÷'){
             return 2;
@@ -256,6 +256,7 @@ public class formCalcolatrice {
         });
     }
 
+    //Main
     public static void main(String[] args) {
         JFrame frame = new JFrame("formCalcolatrice");
         frame.setContentPane(new formCalcolatrice().panelBase);
