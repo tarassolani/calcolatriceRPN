@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Stack;
+import javax.swing.JOptionPane;
 
 public class formCalcolatrice {
     private JPanel panelBase;
@@ -44,38 +45,33 @@ public class formCalcolatrice {
                 s+=c;
             }
             //In tutti gli altri casi si tratta di simboli
+            else if(c=='('){
+                    stack.push(c);
+                }
+            else if(c==')'){ //Svuoto lo stack appena trovo una parentesi chiusa
+                while (!stack.isEmpty() && stack.peek() != '(') {
+                    s += " " + stack.pop();
+                }
+                if (!stack.isEmpty() && stack.peek() == '(') {
+                    stack.pop(); //Tolgo la parentesi aperta rimasta
+                }
+            }
+            //In tutti gli altri casi, confronto le priorità degli operatori, e tolgo elementi dallo stack in base alle priorità
             else{
-                if(s.charAt(s.length()-1)!=' '){
+                if(!s.isEmpty() && s.charAt(s.length() - 1) != ' '){
                     s+=" "; //Aggiungo uno spazio alla stringa di output in modo da separare i numeri
                 }
-                //Se è una parentesi aperta, la inserisco direttamente
-                if(c=='('){
-                    stack.push(c);
+                while(!stack.isEmpty() && comparePriority(stack.peek(), c)){
+                    s+=stack.pop()+" ";
                 }
-                else{
-                    //In tutti gli altri casi, confronto le priorità degli operatori, e tolgo elementi dallo stack in base alle priorità
-                    while(!stack.isEmpty() && comparePriority(stack.peek(), c)){
-                        if(stack.peek()!='('){
-                            s+=stack.pop();
-                        }
-                        else{
-                            stack.pop();
-                        }
-                    }
                     //Inserisco l'ultimo operatore nello stack
-                    stack.push(c);
-                }
+                stack.push(c);
             }
         }
 
         //Svuoto lo stack quando finisco di scorrere la stringa di input
         while(!stack.isEmpty()){
-            if(stack.peek()!='(' && stack.peek()!=')'){
-                s+=" "+stack.pop();
-            }
-            else{
-                stack.pop();
-            }
+            s+=" "+stack.pop();
         }
         return s;
     }
@@ -84,10 +80,10 @@ public class formCalcolatrice {
     float solveRPN(String input){
         Stack<Float> st = new Stack<>(); //Stack per aggiungere i numeri
         float n1, n2;
-        float res=0;
         String[] arr = input.split("\\s+"); //Divisione della stringa di input
 
         for(String s:arr){
+            float res=0;
             if(s.matches("\\d+")){
                 st.push(Float.parseFloat(s));
             }
@@ -125,7 +121,16 @@ public class formCalcolatrice {
 
     //Confronto priorità tra due operatori
     boolean comparePriority(char c1, char c2){
-        if(operatorPriority(c1) > operatorPriority(c2)){
+        if(operatorPriority(c1) >= operatorPriority(c2)){
+            return true;
+        }
+        return false;
+    }
+
+    //Controllo se la stringa è RPN o infissa
+    boolean isPostfix(String input){
+        char lastChar=input.charAt(input.length()-1);
+        if(lastChar=='+'||lastChar=='-'||lastChar=='*'||lastChar=='/'||lastChar=='×'||lastChar=='÷'){
             return true;
         }
         return false;
@@ -239,7 +244,14 @@ public class formCalcolatrice {
         bSolve.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                txtOutput.setText(Float.toString(solveRPN(convertToRPN(txtInput.getText()))));
+                String inputText=txtInput.getText();
+                if(!inputText.isBlank() && !inputText.isEmpty()) { //Se l'input non è vuoto
+                    if (isPostfix(inputText)) { //Controllo se si tratta di espressione RPN o infissa
+                        txtOutput.setText(Float.toString(solveRPN(inputText))); //Calcolo direttamente il risultato
+                    } else {
+                        txtOutput.setText(Float.toString(solveRPN(convertToRPN(inputText)))); //Converto in RPN prima di trovare il risultato
+                    }
+                }
             }
         });
     }
