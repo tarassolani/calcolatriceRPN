@@ -113,7 +113,7 @@ public class Database {
     }
 
     //Metodo per inserire espressioni nella cronologia
-    public boolean InsertExpression(String username, String expression, int result, int id) {
+    public boolean InsertExpression(String username, String expression, float result) {
         try {
             if (!conn.isValid(5)) {
                 return false;
@@ -126,7 +126,7 @@ public class Database {
         try {
             PreparedStatement statement = conn.prepareStatement(query);
             statement.setString(1, expression);
-            statement.setInt(2, result);
+            statement.setFloat(2, result);
             statement.setString(3, username);
             statement.executeUpdate();
 

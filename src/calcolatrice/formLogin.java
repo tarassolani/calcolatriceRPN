@@ -32,7 +32,7 @@ public class formLogin extends JFrame{
 
                 if(db.Connect() && db.UserExists(username, password)){
                     //Apre il form calcolatrice
-                    formCalcolatrice window2 = new formCalcolatrice();
+                    formCalcolatrice window2 = new formCalcolatrice(db, username);
                     window2.showForm();
                     //Chiude il form login
                     Window currentWindow = SwingUtilities.getWindowAncestor(btnLogin);
@@ -51,7 +51,7 @@ public class formLogin extends JFrame{
 
                 if(db.Connect() && db.InsertUser(username, password)){
                     //Apre il form calcolatrice
-                    formCalcolatrice window2 = new formCalcolatrice();
+                    formCalcolatrice window2 = new formCalcolatrice(db, username);
                     window2.showForm();
 
                     //Chiude il form login

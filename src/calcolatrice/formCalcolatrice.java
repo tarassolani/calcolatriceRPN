@@ -4,7 +4,6 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Stack;
-import javax.swing.JOptionPane;
 
 public class formCalcolatrice extends JPanel{
     private JPanel panelBase;
@@ -28,6 +27,11 @@ public class formCalcolatrice extends JPanel{
     private JButton bCanc;
     private JButton bSolve;
     private JTextField txtInput;
+    private JTextArea txtCronologia;
+    private JButton btnCronologia;
+
+    private Database db;
+    String username;
 
     //Funzione che aggiunge cifre e segni all'input
     void OnButtonClick(JButton b){
@@ -136,7 +140,10 @@ public class formCalcolatrice extends JPanel{
         return false;
     }
 
-    public formCalcolatrice() {
+    public formCalcolatrice(Database database, String user) {
+
+        db=database;
+        username=user;
 
         //AGGIUNTA DI LISTENERS AI TASTI
         b1.addActionListener(new ActionListener() {
@@ -251,7 +258,16 @@ public class formCalcolatrice extends JPanel{
                     } else {
                         txtOutput.setText(Float.toString(solveRPN(convertToRPN(inputText)))); //Converto in RPN prima di trovare il risultato
                     }
+                    db.InsertExpression(username, inputText, Float.parseFloat(txtOutput.getText()));
                 }
+            }
+        });
+
+        //Button per mostrare la cronologia di espressioni di un dato utente
+        btnCronologia.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                txtCronologia.setText(db.SelectFromCronologia(username).toString());
             }
         });
     }
