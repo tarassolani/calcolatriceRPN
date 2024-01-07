@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 import java.util.Stack;
 import javax.swing.JOptionPane;
 
-public class formCalcolatrice {
+public class formCalcolatrice extends JPanel{
     private JPanel panelBase;
     private JTextField txtOutput;
     private JButton b7;
@@ -256,13 +256,21 @@ public class formCalcolatrice {
         });
     }
 
-    //Main
+    public void showForm() {
+        JFrame frame = new JFrame("Form Calcolatrice");
+        frame.setContentPane(panelBase);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.pack();
+        frame.setVisible(true);
+    }
+
+    /*//Main
     public static void main(String[] args) {
         JFrame frame = new JFrame("formCalcolatrice");
         frame.setContentPane(new formCalcolatrice().panelBase);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
-    }
+    }*/
 
 }
